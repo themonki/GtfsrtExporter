@@ -7,6 +7,9 @@
 # Netbeans
 **nbproject
 
+#eclipse
+.settings
+
 #mvn
 target
 dependency-reduced-pom.xml
