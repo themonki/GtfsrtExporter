@@ -155,8 +155,7 @@ public class ExporterMain {
 		TripUpdatesServlet tripUpdatesServlet = injector.getInstance(TripUpdatesServlet.class);
 		tripUpdatesServlet.setUrl(urlTripUpdates);
 
-		VehiclePositionsServlet vehiclePositionsServlet = injector
-				.getInstance(VehiclePositionsServlet.class);
+		VehiclePositionsServlet vehiclePositionsServlet = injector.getInstance(VehiclePositionsServlet.class);
 		vehiclePositionsServlet.setUrl(urlVehiclePositions);
 		
 		AlertsServlet alertsServlet = injector.getInstance(AlertsServlet.class);

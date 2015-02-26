@@ -50,7 +50,7 @@ public class ExporterProviderImpl {
 	private String alerts_path;
 
 	/**
-	 * How often vehicle data will be downloaded, in seconds.
+	 * How often feed data will be read, in seconds.
 	 */
 	private int _refreshInterval = 10;
 
@@ -61,7 +61,7 @@ public class ExporterProviderImpl {
 
 	/**
 	 * @param refreshInterval
-	 *            how often vehicle data will be downloaded, in seconds.
+	 *            how often feed data will be read, in seconds.
 	 */
 	public void setRefreshInterval(int refreshInterval) {
 		_refreshInterval = refreshInterval;
@@ -69,8 +69,7 @@ public class ExporterProviderImpl {
 
 	/**
 	 * The start method automatically starts up a recurring task that
-	 * periodically downloads the latest vehicle data from the SEPTA vehicle
-	 * stream and processes them.
+	 * periodically read the GTFS-realtime feed from files and refresh them.
 	 */
 	@PostConstruct
 	public void start() {
@@ -80,7 +79,7 @@ public class ExporterProviderImpl {
 	}
 
 	/**
-	 * The stop method cancels the recurring vehicle data downloader task.
+	 * The stop method cancels the recurring feed data task.
 	 */
 	@PreDestroy
 	public void stop() {
@@ -133,8 +132,7 @@ public class ExporterProviderImpl {
 	}
 
 	/**
-	 * Task that will download new vehicle data from the remote data source when
-	 * executed.
+	 * Task that will refresh feed data from files.
 	 */
 	private class FeedRefreshTask implements Runnable {
 
