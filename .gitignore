@@ -1,4 +1,4 @@
-#bin
+# bin
 **bin
 
 # Java
@@ -7,12 +7,19 @@
 # Netbeans
 **nbproject
 
-#eclipse
+# eclipse
 .settings
 
-#mvn
+# data
+**.pb
+**.properties
+
+# mvn
 target
 dependency-reduced-pom.xml
+
+#svn
+.svn
 
 # Paquetes de instalacion #
 *.gem
