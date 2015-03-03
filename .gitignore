@@ -6,6 +6,8 @@
 
 # Netbeans
 **nbproject
+**build*
+**dist
 
 # eclipse
 .settings
