@@ -52,7 +52,7 @@ public class ExporterProviderImpl {
 	/**
 	 * How often feed data will be read, in seconds.
 	 */
-	private int _refreshInterval = 10;
+	private int _refreshInterval = 7;
 
 	@Inject
 	public void setGtfsRealtimeProvider(GtfsRealtimeMutableProvider gtfsRealtimeProvider) {
