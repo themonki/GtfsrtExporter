@@ -1,2 +1,2 @@
 mvn package
-/usr/local/java/jdk1.8.0_31/bin/java -jar target/GtfsrtExporter-0.0.1-SNAPSHOT.jar --vehiclePositionsPathRead=/home/monki/metrocali/GTFS/gtfsrt/data.pb
+/usr/local/java/jdk1.8.0_31/bin/java -jar target/GtfsrtExporter-0.0.1-SNAPSHOT.jar --vehiclePositionsPathRead=/home/monki/metrocali/GTFS/gtfsrt/vehiclePositions.pb
