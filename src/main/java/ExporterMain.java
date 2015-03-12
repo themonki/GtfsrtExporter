@@ -40,11 +40,11 @@ import com.google.inject.Module;
 
 public class ExporterMain {
 
-	private final static String DEFAULT_TRIP_UPDATES_URL = "http://localhost:8080/trip-updates";
+	private final static String DEFAULT_TRIP_UPDATES_URL = "http://localhost:8082/trip-updates";
 
-	private final static String DEFAULT_VEHICLE_POSITIONS_URL = "http://localhost:8080/vehicle-positions";
+	private final static String DEFAULT_VEHICLE_POSITIONS_URL = "http://localhost:8082/vehicle-positions";
 
-	private final static String DEFAULT_ALERTS_URL = "http://localhost:8080/alerts";
+	private final static String DEFAULT_ALERTS_URL = "http://localhost:8082/alerts";
 
 	private final static String DEFAULT_TRIP_UPDATES_PATH_READ = "F_TRIP";
 
@@ -168,7 +168,7 @@ public class ExporterMain {
 		CommandLineInterfaceLibrary.printUsage(getClass());
 	}
 
-	protected void buildOptions(Options options) {
+	private void buildOptions(Options options) {
 		options.addOption(ARG_TRIP_UPDATES_PATH, true, "trip updates path");
 		options.addOption(ARG_TRIP_UPDATES_URL, true, "trip updates url");
 		options.addOption(ARG_TRIP_UPDATES_PATH_READ, true, "trip updates path to read");

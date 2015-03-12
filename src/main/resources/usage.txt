@@ -1,0 +1,16 @@
+Description:
+  Exporter GTFS-realtime data.
+  
+Usage:
+  java -jar GtfsrtExporter.jar [Args]
+
+Args:
+  --vehiclePositionsUrl=url             GTFS-realtime vehicle positions url
+  --vehiclePositionsPath=path           GTFS-realtime vehicle positions path export
+  --vehiclePositionsPathRead=path       GTFS-realtime vehicle positions path to read binary file
+  --tripUpdatesUrl=url                  GTFS-realtime trip updates url
+  --tripUpdatesPath=path                GTFS-realtime trip updates path export
+  --tripUpdatesPathRead=path            GTFS-realtime trip updates path to read binary file
+  --alertsUrl=url                       GTFS-realtime alerts url
+  --alertsPath=path                     GTFS-realtime alerts path export
+  --alertsPathRead=path                 GTFS-realtime alerts path to read binary file

@@ -1,2 +1,3 @@
+mvn clean
 mvn package
-/usr/local/java/jdk1.8.0_31/bin/java -jar target/GtfsrtExporter-0.0.1-SNAPSHOT.jar --vehiclePositionsPathRead=/home/monki/metrocali/GTFS/gtfsrt/vehiclePositions.pb
+/usr/local/java/jdk1.8.0_31/bin/java -jar target/GtfsrtExporter-0.0.1-SNAPSHOT.jar --vehiclePositionsPathRead=/home/monki/metrocali/GTFS/gtfsrt/vehiclePositions.pb --tripUpdatesPathRead=/home/monki/metrocali/GTFS/gtfsrt/tripUpdates.pb --alertsPathRead=/home/monki/metrocali/GTFS/gtfsrt/alerts.pb
