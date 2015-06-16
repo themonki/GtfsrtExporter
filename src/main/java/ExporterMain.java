@@ -39,12 +39,14 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 
 public class ExporterMain {
+	
+	private final static String DEFAULT_PORT = "8082";
 
-	private final static String DEFAULT_TRIP_UPDATES_URL = "http://localhost:8082/trip-updates";
+	private final static String DEFAULT_TRIP_UPDATES_URL = "http://localhost:" + DEFAULT_PORT + "/trip-updates";
 
-	private final static String DEFAULT_VEHICLE_POSITIONS_URL = "http://localhost:8082/vehicle-positions";
+	private final static String DEFAULT_VEHICLE_POSITIONS_URL = "http://localhost:" + DEFAULT_PORT + "/vehicle-positions";
 
-	private final static String DEFAULT_ALERTS_URL = "http://localhost:8082/alerts";
+	private final static String DEFAULT_ALERTS_URL = "http://localhost:" + DEFAULT_PORT + "/alerts";
 
 	private final static String DEFAULT_TRIP_UPDATES_PATH_READ = "F_TRIP";
 
