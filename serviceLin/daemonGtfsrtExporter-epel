@@ -1,0 +1,142 @@
+#!/bin/sh
+#
+# /etc/rc.d/init.d/daemonGtfsrtExporter
+# daemonGtfsrtExporter - Exportador creador de URL para Gtfs-realtime
+#
+# chkconfig:   2345 31 69
+# description: <Exportador creador de URL de Gtfs-realtime para datos del MIO>
+# processname: daemonGtfsrtExporter
+
+### BEGIN INIT INFO
+# Provides:          daemongGtfsrtExporter
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Description:       Exportador creador de URL para Gtfs-realtime
+### END INIT INFO
+
+#cambiar de acuerdo al Makefile
+COMMON_NAME=GtfsrtExporter
+
+NAME=daemon$COMMON_NAME
+SH_NAME=$NAME.sh
+DAEMON="$SH_NAME"
+DAEMON_ARGS="exec"
+PIDFILE=/var/run/$NAME.pid
+SCRIPTNAME=/etc/init.d/$NAME
+
+DESC=`$DAEMON desc`
+PATH=/sbin:/bin:/usr/bin:/usr/sbin
+# Source function library.
+. /etc/init.d/functions
+
+exec="/usr/bin/$DAEMON"
+prog="$NAME"
+args="$DAEMON_ARGS"
+TERM="xterm"
+
+[ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
+
+LOCKFILE=/var/lock/subsys/$prog
+
+start() {
+    [ -x $exec ] || exit 5    
+    echo -n $"Starting $prog: "
+    daemon $exec "$args" &
+    pid=$!
+    retval=$?
+    sleep 2
+    ppid=`pgrep -x "$DAEMON"`
+    [ $retval -eq 0 ] && touch $LOCKFILE && echo $pid > "$PIDFILE" && echo $ppid >> "$PIDFILE" && rh_status && echo_success
+    [ ! $retval -eq 0 ] && echo_failure
+    return $retval
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc -p "$PIDFILE" -d 2 $DAEMON -HUP
+    #retval=$?
+	
+	# Matar por pid el proceso daemon
+	pid=""
+    [ -f "$PIDFILE" ] && pid=`cat "$PIDFILE" | head -1`
+    [ ! -z $pid ] && kill $pid >/dev/null 2>&1
+    
+    # Intentar matar por nombre de proceso
+    ppid=`pgrep -x "$DAEMON"`
+    [ ! -z $ppid ] && pkill -HUP $DAEMON >/dev/null 2>&1
+    rm -f $PIDFILE $LOCKFILE
+    return 0
+}
+
+restart() {
+    stop
+    start
+}
+
+reload() {
+    restart
+}
+
+force_reload() {
+    restart
+}
+
+rh_status() {
+    # run checks to determine if the service is running or use generic status
+    status -p "$PIDFILE" -l $prog $DAEMON
+}
+
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
+
+
+case "$1" in
+    start)
+        rh_status_q && echo "Running $prog ..."
+        rh_status_q && exit 0
+        $1
+        echo
+        ;;
+    stop)
+    	rh_status_q || echo "Not running $prog ..."
+    	rh_status_q  || exit 0
+        $1
+        echo
+        ;;
+    restart)
+        $1
+        echo
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        echo
+        ;;
+    force-reload)
+        force_reload
+        echo
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rhstatus_q || exit 0
+        restart
+        ;;
+    print)
+	  	D_JVM=`$DAEMON java` >&2
+	  	D_ARG=`$DAEMON args` >&2
+	  	echo "Demonio $NAME" >&2
+	  	echo "Descripcion: $DESC" >&2
+	  	echo "Comando: $DAEMON $DAEMON_ARGS" >&2
+	  	echo "Usando jdk: $D_JVM" >&2
+	  	echo "Parametros: $D_ARG" >&2
+	  	;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload}"
+        exit 2
+esac
+exit $?
