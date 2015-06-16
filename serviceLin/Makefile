@@ -1,13 +1,13 @@
-# Makefile para instalar GtfsrtExporter
+# Makefile para instalar GtfsrtExpo
 # Edgar Moncada
 # Create 16-04-2015
 # Ejecutar solo como root
 
-COMMON_NAME=GtfsrtExporter
+COMMON_NAME=GtfsrtExpo
 
 INSTALL_PATH=/usr/local/$(COMMON_NAME)
 CONFIG_PATH=/usr/local/etc/$(COMMON_NAME)
-DAEMON_NAME=daemon$(COMMON_NAME)
+DAEMON_NAME=dm$(COMMON_NAME)
 SERVICE_PATH=/etc/init.d/$(DAEMON_NAME)
 JAR_NAME=$(COMMON_NAME).jar
 RES_PATH=resources

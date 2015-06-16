@@ -12,7 +12,7 @@
 ##
 
 #cambiar de acuerdo al Makefile
-COMMON_NAME=GtfsrtExporter
+COMMON_NAME=GtfsrtExpo
 DESC="Exportador creador de URL para Gtfs-realtime"
 
 #Si se usa symbol link
@@ -23,7 +23,7 @@ CONFIG_PATH=/usr/local/etc/$COMMON_NAME/resources
 FILE_JAR="$COMMON_NAME.jar"
 JVM_ARGS="-Xms50m -Xmx100m"
 LOG_ARG=""
-FILE_ARGS="--vehiclePositionsPathRead=/home/monki/metrocali/GTFS/gtfsrt/vehiclePositions.pb --tripUpdatesPathRead=/home/monki/metrocali/GTFS/gtfsrt/tripUpdates.pb --alertsPathRead=/home/monki/metrocali/GTFS/gtfsrt/alerts.pb"
+FILE_ARGS="--vehiclePositionsPathRead=/usr/local/gtfsrt/vehiclePositions.pb --tripUpdatesPathRead=/usr/local/gtfsrt/tripUpdates.pb --alertsPathRead=/usr/local/gtfsrt/alerts.pb"
 URL_ARGS="--alertsUrl=http://localhost:8082/alerts --tripUpdatesUrl=http://localhost:8082/trip-updates --vehiclePositionsUrl=http://localhost:8082/vehicle-positions"
 
 if [ ! -z "$JAVA_8_HOME" ]; then

@@ -9,9 +9,9 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 
 #cambiar de acuerdo al Makefile
-COMMON_NAME=GtfsrtExporter
+COMMON_NAME=GtfsrtExpo
 
-NAME=daemon$COMMON_NAME
+NAME=dm$COMMON_NAME
 SH_NAME=$NAME.sh
 DAEMON="/usr/bin/$SH_NAME"
 DAEMON_ARGS="exec"

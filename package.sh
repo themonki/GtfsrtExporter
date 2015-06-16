@@ -8,7 +8,7 @@ mvn clean
 
 mvn package
 
-cp target/GtfsrtExporter-0.0.1-SNAPSHOT.jar build/GtfsrtExporter.jar
+cp target/GtfsrtExporter-0.0.1-SNAPSHOT.jar build/GtfsrtExpo.jar
 
 cp src/main/resources/usage.txt build/
 

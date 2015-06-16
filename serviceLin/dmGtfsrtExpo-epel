@@ -1,14 +1,14 @@
 #!/bin/sh
 #
-# /etc/rc.d/init.d/daemonGtfsrtExporter
-# daemonGtfsrtExporter - Exportador creador de URL para Gtfs-realtime
+# /etc/rc.d/init.d/dmGtfsrtExpo
+# dmGtfsrtExpo - Exportador creador de URL para Gtfs-realtime
 #
 # chkconfig:   2345 31 69
 # description: <Exportador creador de URL de Gtfs-realtime para datos del MIO>
-# processname: daemonGtfsrtExporter
+# processname: dmGtfsrtExpo
 
 ### BEGIN INIT INFO
-# Provides:          daemongGtfsrtExporter
+# Provides:          dmGtfsrtExpo
 # Required-Start:    $all
 # Required-Stop:     $all
 # Default-Start:     2 3 4 5
@@ -17,9 +17,9 @@
 ### END INIT INFO
 
 #cambiar de acuerdo al Makefile
-COMMON_NAME=GtfsrtExporter
+COMMON_NAME=GtfsrtExpo
 
-NAME=daemon$COMMON_NAME
+NAME=dm$COMMON_NAME
 SH_NAME=$NAME.sh
 DAEMON="$SH_NAME"
 DAEMON_ARGS="exec"
