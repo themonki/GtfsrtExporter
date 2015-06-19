@@ -23,7 +23,7 @@ CONFIG_PATH=/usr/local/etc/$COMMON_NAME/resources
 FILE_JAR="$COMMON_NAME.jar"
 JVM_ARGS="-Xms30m -Xmx50m"
 LOG_ARG=""
-FILE_ARGS="--vehiclePositionsPathRead=/usr/local/gtfsrt/vehiclePositions.pb --tripUpdatesPathRead=/usr/local/gtfsrt/tripUpdates.pb --alertsPathRead=/usr/local/gtfsrt/alerts.pb"
+FILE_ARGS="--vehiclePositionsPathRead=/var/www/html/vehiclePositions.pb --tripUpdatesPathRead=/var/www/html/tripUpdates.pb --alertsPathRead=/var/www/html/alerts.pb"
 URL_ARGS="--alertsUrl=http://localhost:8082/alerts --tripUpdatesUrl=http://localhost:8082/trip-updates --vehiclePositionsUrl=http://localhost:8082/vehicle-positions"
 
 if [ ! -z "$JAVA_8_HOME" ]; then
