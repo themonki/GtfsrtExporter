@@ -21,7 +21,7 @@ cd "$WORK_PATH"
 
 CONFIG_PATH=/usr/local/etc/$COMMON_NAME/resources
 FILE_JAR="$COMMON_NAME.jar"
-JVM_ARGS="-Xms50m -Xmx100m"
+JVM_ARGS="-Xms30m -Xmx50m"
 LOG_ARG=""
 FILE_ARGS="--vehiclePositionsPathRead=/usr/local/gtfsrt/vehiclePositions.pb --tripUpdatesPathRead=/usr/local/gtfsrt/tripUpdates.pb --alertsPathRead=/usr/local/gtfsrt/alerts.pb"
 URL_ARGS="--alertsUrl=http://localhost:8082/alerts --tripUpdatesUrl=http://localhost:8082/trip-updates --vehiclePositionsUrl=http://localhost:8082/vehicle-positions"
