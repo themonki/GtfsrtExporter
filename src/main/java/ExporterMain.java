@@ -71,6 +71,8 @@ public class ExporterMain {
 	private static final String ARG_ALERTS_URL = "alertsUrl";
 
 	private static final String ARG_ALERTS_PATH_READ = "alertsPathRead";
+	
+	private static final String ARG_REFRESH_INTERVAL = "refreshInterval";
 
 	private LifecycleService lifecycleService;
 
@@ -154,6 +156,10 @@ public class ExporterMain {
 			provider.setAlerts_path(cli.getOptionValue(ARG_ALERTS_PATH_READ));
 		}
 
+		if(cli.hasOption(ARG_REFRESH_INTERVAL)){
+			provider.setRefreshInterval(Integer.parseInt(cli.getOptionValue(ARG_REFRESH_INTERVAL)));
+			
+		}
 		TripUpdatesServlet tripUpdatesServlet = injector.getInstance(TripUpdatesServlet.class);
 		tripUpdatesServlet.setUrl(urlTripUpdates);
 
@@ -180,6 +186,6 @@ public class ExporterMain {
 		options.addOption(ARG_ALERTS_PATH, true, "alerts path");
 		options.addOption(ARG_ALERTS_URL, true, "alerts url");
 		options.addOption(ARG_ALERTS_PATH_READ, true, "alerts path to read");
-
+		options.addOption(ARG_REFRESH_INTERVAL, true, "refresh interval for publish");
 	}
 }
