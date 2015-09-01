@@ -15,7 +15,7 @@
 # data
 **.pb
 **.properties
-**exporter.log
+**exporter.log*
 
 # mvn
 target
