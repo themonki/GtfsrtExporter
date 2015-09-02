@@ -90,8 +90,8 @@ define blockRemove
 	@if [ -f $(SERVICE_PATH) ]; then $(SERVICE_PATH) stop; echo "$(SERVICE_PATH) stop"; fi
 	@echo "detenido ..."
 	@if [ -f $(SERVICE_PATH) ] && [ ! -z "$(DISTRO_REDHAT)" ]; then chkconfig --del $(DAEMON_NAME); echo "chkconfig --del $(DAEMON_NAME)"; fi
+	@if [ -f $(SERVICE_PATH) ] && [ ! -z "$(DISTRO_DEBIAN)" ]; then update-rc.d -f $(DAEMON_NAME) remove; echo "update-rc.d -f $(DAEMON_NAME) remove"; fi 
 	rm -rf $(INSTALL_PATH) $(SERVICE_PATH) /usr/bin/$(DAEMON_NAME).sh
-	@if [ -f $(SERVICE_PATH) ] && [ ! -z "$(DISTRO_DEBIAN)" ]; then update-rc.d $(DAEMON_NAME) remove; echo "update-rc.d $(DAEMON_NAME) remove"; fi 
 	@echo ""
 	@echo "Removido el componente en $(INSTALL_PATH) y $(SERVICE_PATH)."
 	@echo ""
