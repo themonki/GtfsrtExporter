@@ -69,8 +69,13 @@ define blockInstall
 	chmod +x $(INSTALL_PATH)/$(DAEMON_NAME).sh;
 	chmod 755 $(SERVICE_PATH);
 	ln -s $(INSTALL_PATH)/$(DAEMON_NAME).sh /usr/bin/$(DAEMON_NAME).sh;
+	@if [ ! -d $(CONFIG_PATH) ]; then mkdir -p $(CONFIG_PATH); echo "mkdir -p $(CONFIG_PATH)"; cp -R $(RES_PATH) $(CONFIG_PATH); echo "cp -R $(RES_PATH) $(CONFIG_PATH)";  else echo "Existe el directorio $(CONFIG_PATH)";fi
+	@if [ -f "$(CONFIG_PATH)/$(RES_PATH)/config.properties" ]; then  echo "Existe archivo de configuracion $(CONFIG_PATH)/$(RES_PATH)/config.properties. No se reemplaza"; else if [ ! -f $(RES_PATH)/config.properties ]; then echo "Warning: no existe archivo $(CONFIG_PATH)/$(RES_PATH)/config.properties."; fi ; fi
+	@if [ ! -f "$(CONFIG_PATH)/$(RES_PATH)/config.properties" ] && [ -f $(RES_PATH)/config.properties ]; then cp $(RES_PATH)/config.properties $(CONFIG_PATH)/$(RES_PATH); echo "cp $(RES_PATH)/config.properties $(CONFIG_PATH)/$(RES_PATH)"; fi;
 	@echo ""
 	@echo "Instalado"
+	@echo "Revisar que exista el archivo $(CONFIG_PATH)/$(RES_PATH)/config.properties y este configurado adecuadamente."
+	@echo "El log se almacenara en $(INSTALL_PATH)"
 	@echo ""
 endef
 

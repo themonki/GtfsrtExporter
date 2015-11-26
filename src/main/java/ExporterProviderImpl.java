@@ -27,8 +27,8 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import org.onebusway.gtfs_realtime.exporter.GtfsRealtimeLibrary;
-import org.onebusway.gtfs_realtime.exporter.GtfsRealtimeMutableProvider;
+import org.onebusway.gtfsrealtime.exporter.GtfsRealtimeLibrary;
+import org.onebusway.gtfsrealtime.exporter.GtfsRealtimeMutableProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

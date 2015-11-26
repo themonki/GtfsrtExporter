@@ -27,16 +27,17 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.Parser;
 import org.onebusaway.cli.CommandLineInterfaceLibrary;
 import org.onebusaway.guice.jsr250.LifecycleService;
-import org.onebusway.gtfs_realtime.exporter.AlertsFileWriter;
-import org.onebusway.gtfs_realtime.exporter.AlertsServlet;
-import org.onebusway.gtfs_realtime.exporter.TripUpdatesFileWriter;
-import org.onebusway.gtfs_realtime.exporter.TripUpdatesServlet;
-import org.onebusway.gtfs_realtime.exporter.VehiclePositionsFileWriter;
-import org.onebusway.gtfs_realtime.exporter.VehiclePositionsServlet;
+import org.onebusway.gtfsrealtime.exporter.AlertsFileWriter;
+import org.onebusway.gtfsrealtime.exporter.AlertsServlet;
+import org.onebusway.gtfsrealtime.exporter.TripUpdatesFileWriter;
+import org.onebusway.gtfsrealtime.exporter.TripUpdatesServlet;
+import org.onebusway.gtfsrealtime.exporter.VehiclePositionsFileWriter;
+import org.onebusway.gtfsrealtime.exporter.VehiclePositionsServlet;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
+import com.mio.gtfsrt.config.ReadConfig;
 
 public class ExporterMain {
 	
@@ -73,6 +74,8 @@ public class ExporterMain {
 	private static final String ARG_ALERTS_PATH_READ = "alertsPathRead";
 	
 	private static final String ARG_REFRESH_INTERVAL = "refreshInterval";
+	
+	private static final String ARG_CONFIG_FILE = "configFile";
 
 	private LifecycleService lifecycleService;
 
@@ -158,8 +161,12 @@ public class ExporterMain {
 
 		if(cli.hasOption(ARG_REFRESH_INTERVAL)){
 			provider.setRefreshInterval(Integer.parseInt(cli.getOptionValue(ARG_REFRESH_INTERVAL)));
-			
 		}
+		
+		if(cli.hasOption(ARG_CONFIG_FILE)){
+			ReadConfig.CONFIG_FILE = cli.getOptionValue(ARG_CONFIG_FILE);
+		}
+		
 		TripUpdatesServlet tripUpdatesServlet = injector.getInstance(TripUpdatesServlet.class);
 		tripUpdatesServlet.setUrl(urlTripUpdates);
 
@@ -187,5 +194,6 @@ public class ExporterMain {
 		options.addOption(ARG_ALERTS_URL, true, "alerts url");
 		options.addOption(ARG_ALERTS_PATH_READ, true, "alerts path to read");
 		options.addOption(ARG_REFRESH_INTERVAL, true, "refresh interval for publish");
+		options.addOption(ARG_CONFIG_FILE, true, "Property File with parameters");
 	}
 }

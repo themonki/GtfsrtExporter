@@ -15,3 +15,4 @@ Args:
   --alertsPath=path                     GTFS-realtime alerts path export
   --alertsPathRead=path                 GTFS-realtime alerts path to read binary file
   --refreshInterval=time                Refresh Interval time to update feed
+  --configFile=file                     Property File with parameters

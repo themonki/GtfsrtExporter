@@ -23,8 +23,11 @@ CONFIG_PATH=/usr/local/etc/$COMMON_NAME/resources
 FILE_JAR="$COMMON_NAME.jar"
 JVM_ARGS="-Xms30m -Xmx50m"
 LOG_ARG=""
-FILE_ARGS="--vehiclePositionsPathRead=/var/www/html/vehiclePositions.pb --tripUpdatesPathRead=/var/www/html/tripUpdates.pb --alertsPathRead=/var/www/html/alerts.pb"
+FILE_ARGS="--vehiclePositionsPathRead=/media/bpfiles/vehiclePositions.pb --tripUpdatesPathRead=/media/bpfiles/tripUpdates.pb --alertsPathRead=/media/bpfiles/alerts.pb"
 URL_ARGS="--alertsUrl=http://localhost:8082/alerts --tripUpdatesUrl=http://localhost:8082/trip-updates --vehiclePositionsUrl=http://localhost:8082/vehicle-positions"
+EXPO_ARGS="--vehiclePositionsPath=/var/www/html/gtfs/realtime/vehiclePositions.pb --tripUpdatesPath=/var/www/html/gtfs/realtime/tripUpdates.pb --alertsPath=/var/www/html/gtfs/realtime/alerts.pb"
+REFR_ARGS="--refreshInterval=10"
+CONFIG_ARG="$CONFIG_PATH/config.properties"
 
 if [ ! -z "$JAVA_8_HOME" ]; then
 	JAVA_HOME="$JAVA_8_HOME"
@@ -36,7 +39,7 @@ fi
 
 JAVA_BIN="$JAVA_HOME/bin/java"
 
-ARGS="$JVM_ARGS $LOG_ARG -jar $FILE_JAR $FILE_ARGS $URL_ARGS"
+ARGS="$JVM_ARGS $LOG_ARG -jar $FILE_JAR $FILE_ARGS $URL_ARGS $EXPO_ARGS $REFR_ARGS $CONFIG_ARG"
 
 COMAND="$JAVA_BIN $ARGS"
 
