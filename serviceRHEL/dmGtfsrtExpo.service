@@ -1,0 +1,11 @@
+[Unit]
+Description=Exportador creador de URL de Gtfs-realtime para datos del MIO
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/dmGtfsrtExpo.sh exec
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
